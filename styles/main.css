@@ -84,10 +84,10 @@ body {
 
 /** ------------ CARD ------------ */
 .extensions__card {
-	background-color: #ccc;
 	border-radius: 1rem;
 	width: 100%;
-	padding: 1rem;
+	padding: 1.5rem;
+	border: 0.1rem solid #ccc;
 }
 
 .extensions__card:not(:last-child) {
@@ -116,4 +116,14 @@ body {
 .extensions__toggle-container {
 	display: flex;
 	justify-content: space-between;
+	margin-top: 1.5rem;
+}
+
+.extensions__remove {
+	width: 25%;
+	font-size: 1.6rem;
+	text-align: center;
+	padding: 0.5rem 1rem;
+	border: 0.1rem solid #ccc;
+	border-radius: 1.5rem;
 }
