@@ -2,7 +2,6 @@ const getBookmarkData = async () => {
 	try {
 		const extensionJSON = await fetch('../data.json');
 		const extensionData = await extensionJSON.json();
-
 		displayBookmarks(extensionData);
 	} catch (error) {
 		console.error(error);
