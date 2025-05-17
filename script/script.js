@@ -14,8 +14,8 @@ const displayBookmarks = (allExtensions) => {
 
 	allExtensions.forEach((extension) => {
 		const extensionCard = document.createElement('div');
-		const contentContainer = document.createElement('div');
-		const extensionImageBackground = document.createElement('div');
+		const cardHeaderContainer = document.createElement('div');
+		const textContentContainer = document.createElement('div');
 		const extensionImage = document.createElement('img');
 		const extensionTitle = document.createElement('h3');
 		const extensionContent = document.createElement('p');
@@ -25,8 +25,8 @@ const displayBookmarks = (allExtensions) => {
 		const toggleActive = document.createElement('div');
 
 		extensionCard.classList.add('extensions__card');
-		contentContainer.classList.add('extensions__content-container');
-		extensionImageBackground.classList.add('extensions__content-image');
+		cardHeaderContainer.classList.add('extensions__header');
+		textContentContainer.classList.add('extensions__header-content');
 		extensionTitle.classList.add('extensions__title');
 		removeToggleContainer.classList.add('extensions__toggle-container');
 		removeButton.classList.add('extensions__remove');
@@ -38,13 +38,9 @@ const displayBookmarks = (allExtensions) => {
 		removeButton.textContent = 'Remove';
 
 		cardContainer.appendChild(extensionCard);
-		extensionCard.append(contentContainer, removeToggleContainer);
-		contentContainer.append(
-			extensionImageBackground,
-			extensionTitle,
-			extensionContent
-		);
-		extensionImageBackground.appendChild(extensionImage);
+		extensionCard.append(cardHeaderContainer, removeToggleContainer);
+		cardHeaderContainer.append(extensionImage, textContentContainer);
+		textContentContainer.append(extensionTitle, extensionContent);
 		removeToggleContainer.append(removeButton, toggleContainer);
 		toggleContainer.appendChild(toggleActive);
 	});
