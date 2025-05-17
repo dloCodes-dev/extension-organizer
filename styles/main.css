@@ -132,9 +132,10 @@ p {
 .extensions__toggle-container {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 1.5rem;
+	align-items: center;
+	margin-top: 2.5rem;
 }
-
+/** ------------ REMOVE (CARD) ------------ */
 .extensions__remove {
 	width: 30%;
 	font-size: 1.6rem;
@@ -142,5 +143,24 @@ p {
 	padding: 0.5rem 1rem;
 	border: 0.1rem solid #ccc;
 	border-radius: 1.5rem;
-	margin-top: 2rem;
+}
+
+.extensions__toggle {
+	position: relative;
+	background-color: hsl(3, 77%, 44%);
+	width: 5rem;
+	height: 2.5rem;
+	padding: 1rem 1rem;
+	border-radius: 2rem;
+}
+
+.extensions__toggle > div {
+	position: absolute;
+	top: 0.1rem;
+	right: 0.15rem;
+	background-color: white;
+	width: 2.3rem;
+	height: 2.3rem;
+	padding: 1rem;
+	border-radius: 50%;
 }
