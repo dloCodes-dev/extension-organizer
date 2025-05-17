@@ -1,0 +1,83 @@
+@font-face {
+	font-family: 'noto';
+	src: url('../assets/fonts/notosans.ttf');
+}
+
+html {
+	font-size: 10px;
+}
+
+body {
+	font-family: 'noto';
+	padding: 1rem;
+	margin: 0;
+	height: 100vh;
+	background: linear-gradient(180deg, #ebf2fc 0%, #eef8f9 100%);
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/** ------------ NAV ------------ */
+.extension__nav {
+	display: flex;
+	justify-content: space-between;
+	margin: 1rem;
+	padding: 0.5rem;
+}
+
+.extension__nav--moon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #ccc;
+	width: 13%;
+	border-radius: 1rem;
+}
+
+/** ------------ HEADER ------------ */
+.extension__header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.extension__header > h1 {
+	font-size: 3rem;
+}
+
+.extension__header > ul {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	column-gap: 5%;
+	width: 100%;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+
+.extension__header > ul > li {
+	font-size: 1.6rem;
+	text-align: center;
+	width: 23%;
+	padding: 0.75rem 1rem;
+	border: 0.1rem solid #ccc;
+	border-radius: 2rem;
+}
+
+.extension__header > ul > li:first-child {
+	width: 15%;
+}
+
+.extension__header > ul > li:last-child {
+	width: 25%;
+}
+
+.extension__header > ul > li:hover {
+	background-color: hsl(3, 77%, 44%);
+	color: white;
+}
