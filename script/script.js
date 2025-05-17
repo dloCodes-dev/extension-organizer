@@ -33,6 +33,9 @@ const displayBookmarks = (allExtensions) => {
 		toggleContainer.classList.add('extensions__toggle');
 
 		extensionImage.setAttribute('src', `${extension.logo}`);
+		extensionTitle.textContent = `${extension.name}`;
+		extensionContent.textContent = `${extension.description}`;
+		removeButton.textContent = 'Remove';
 
 		cardContainer.appendChild(extensionCard);
 		extensionCard.append(contentContainer, removeToggleContainer);
