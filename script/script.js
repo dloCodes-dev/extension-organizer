@@ -45,4 +45,9 @@ const displayBookmarks = (allExtensions) => {
 	});
 };
 
+const toggleExtension = (evt) => {};
+
 getBookmarkData();
+
+const containerForCards = document.querySelector('.extensions-container');
+containerForCards.addEventListener('click', toggleExtension);

@@ -31,12 +31,19 @@ p {
 	background-color: hsl(200, 60%, 99%);
 }
 
+.extension__nav--moon,
+.extensions__remove,
+.extension__header > ul > li:hover,
+.extensions__toggle > div {
+	cursor: pointer;
+}
+
 /** ------------ NAV ------------ */
 .extension__nav {
 	display: flex;
 	justify-content: space-between;
 	background-color: hsl(200, 60%, 99%);
-	padding: 1.5rem;
+	padding: 1rem;
 	border: 0.1rem solid #ccc;
 	border-radius: 1rem;
 	margin: 1rem;
@@ -47,7 +54,8 @@ p {
 	justify-content: center;
 	align-items: center;
 	background-color: hsl(0, 0%, 78%);
-	width: 13%;
+	width: 15%;
+	padding: 1.25rem;
 	border-radius: 1rem;
 }
 
@@ -116,9 +124,6 @@ p {
 	align-items: flex-start;
 }
 
-.extensions__header-content {
-	display: inline;
-}
 .extensions__header-content > p {
 	font-size: 1.6rem;
 	width: 90%;
@@ -163,4 +168,18 @@ p {
 	height: 2.3rem;
 	padding: 1rem;
 	border-radius: 50%;
+}
+
+.extensions__card:nth-child(3) > .extensions__toggle-container .extensions__toggle,
+.extensions__card:nth-child(6) > .extensions__toggle-container .extensions__toggle,
+.extensions__card:nth-child(8) > .extensions__toggle-container .extensions__toggle,
+.extensions__card:nth-child(11) > .extensions__toggle-container .extensions__toggle {
+	background-color: hsl(0, 0%, 78%);
+}
+
+.extensions__card:nth-child(3) > .extensions__toggle-container .extensions__toggle > div,
+.extensions__card:nth-child(6) > .extensions__toggle-container .extensions__toggle > div,
+.extensions__card:nth-child(8) > .extensions__toggle-container .extensions__toggle > div,
+.extensions__card:nth-child(11) > .extensions__toggle-container .extensions__toggle > div {
+	transform: translateX(-2.5rem);
 }
