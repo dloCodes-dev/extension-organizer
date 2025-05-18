@@ -185,8 +185,8 @@ p {
 	height: 2.3rem;
 	padding: 1rem;
 	border-radius: 50%;
-	/* transform: translateX(-2.5rem);
-	transition: translateX 1s ease-in; */
+	/* /* transform: translateX(-2.5rem); */
+	transition: right 1s ease-in;
 }
 
 .extensions__card:nth-child(3) .extensions__toggle--inactive,
@@ -197,8 +197,7 @@ p {
 	position: absolute;
 	top: 0.1rem;
 	left: 0.15rem;
-	/* transform: translateX(2.4rem);
-	transition: translateX 1s ease-in; */
+	transition: left 2s ease-in;
 }
 
 .extensions__card:nth-child(3) > .extensions__toggle-container .extensions__toggle,

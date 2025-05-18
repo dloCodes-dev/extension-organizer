@@ -70,7 +70,11 @@ const darkMode = (switchingToDarkMode) => {
 };
 
 const toggleExtension = (evt) => {
-	console.log('clicked');
+	if (evt.target.classList.contains('extensions__toggle--active')) {
+		evt.target.classList.toggle('extensions__toggle--inactive');
+	} else if (evt.target.classList.contains('extensions__toggle--inactive')) {
+		evt.target.classList.toggle('extensions__toggle--active');
+	}
 };
 
 const dynamicElements = getBookmarkData();
@@ -84,6 +88,5 @@ dynamicElements.then((cards) => {
 });
 
 //* Need to add logic to target specific toggles
-
 const containerForCards = document.querySelector('.extensions-container');
 containerForCards.addEventListener('click', toggleExtension);
