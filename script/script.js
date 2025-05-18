@@ -12,7 +12,6 @@ const displayBookmarks = (allExtensions) => {
 	const cardContainer = document.querySelector('.extensions-container');
 
 	allExtensions.forEach((extension, i) => {
-		console.log(typeof i);
 		const extensionCard = document.createElement('div');
 		const cardHeaderContainer = document.createElement('div');
 		const textContentContainer = document.createElement('div');
@@ -53,11 +52,11 @@ const displayBookmarks = (allExtensions) => {
 
 	const cards = document.querySelectorAll('.extensions__card');
 
-	return cards;
+	return [cards, allExtensions];
 };
 
-const darkMode = (switchingToDarkMode) => {
-	switchingToDarkMode.forEach((cardsAndButtons) => {
+const darkMode = (extensions) => {
+	extensions.forEach((cardsAndButtons) => {
 		cardsAndButtons.classList.toggle('extensions__card--dark');
 	});
 
@@ -69,24 +68,50 @@ const darkMode = (switchingToDarkMode) => {
 	document.body.classList.toggle('dark-mode');
 };
 
-const toggleExtension = (evt) => {
+//* 1.) I need to somehow switch the flag within the object from false to true or vice versa everytime the toggle goes off
+//* 2.) Afterwards need to retain all the nodes that have the --inactive / --active flags and loop through them to turn the flag on / off
+const toggleExtension = (evt, allExtensions) => {
+	const toggleSwitch = evt.target;
+	const currentHeader = toggleSwitch
+		.closest('.extensions__card')
+		.querySelector('.extensions__header h3');
+
 	if (evt.target.classList.contains('extensions__toggle--active')) {
-		evt.target.classList.toggle('extensions__toggle--inactive');
+		toggleSwitch.classList.toggle('extensions__toggle--inactive');
+		toggleSwitch.classList.remove('extensions__toggle--active');
+
+		changeActiveStatus(currentHeader.textContent, allExtensions, false);
 	} else if (evt.target.classList.contains('extensions__toggle--inactive')) {
-		evt.target.classList.toggle('extensions__toggle--active');
+		toggleSwitch.classList.toggle('extensions__toggle--active');
+		toggleSwitch.classList.remove('extensions__toggle--inactive');
+
+		changeActiveStatus(currentHeader.textContent, allExtensions, true);
 	}
+};
+
+const changeActiveStatus = (headerContent, allExtensions, flag) => {
+	allExtensions.forEach((eachExtension) => {
+		if (eachExtension.name.includes(headerContent)) {
+			eachExtension.isActive = flag;
+		}
+	});
+
+	console.log(allExtensions);
 };
 
 const dynamicElements = getBookmarkData();
 
-dynamicElements.then((cards) => {
+dynamicElements.then((results) => {
+	const [extensionCards, jsonOBJ] = results;
+
 	const darkModeButton = document.querySelector('.extension__nav--moon');
+	const containerForCards = document.querySelector('.extensions-container');
+	// const active = document.querySelector('')
 
 	darkModeButton.addEventListener('click', () => {
-		darkMode(cards);
+		darkMode(extensionCards);
+	});
+	containerForCards.addEventListener('click', (evt) => {
+		toggleExtension(evt, jsonOBJ);
 	});
 });
-
-//* Need to add logic to target specific toggles
-const containerForCards = document.querySelector('.extensions-container');
-containerForCards.addEventListener('click', toggleExtension);
