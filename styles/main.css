@@ -38,6 +38,10 @@ p {
 	cursor: pointer;
 }
 
+.dark-mode {
+	background: linear-gradient(180deg, #040918 0%, #091540 100%);
+}
+
 /** ------------ NAV ------------ */
 .extension__nav {
 	display: flex;
@@ -110,6 +114,10 @@ p {
 	border: 0.1rem solid #ccc;
 }
 
+.extensions__card--dark p {
+	color: hsl(0, 0%, 78%);
+}
+
 .extensions__card:first-child {
 	margin-top: 4rem;
 }
@@ -145,9 +153,9 @@ p {
 	width: 30%;
 	font-size: 1.6rem;
 	text-align: center;
-	padding: 0.5rem 1rem;
+	padding: 0.75rem 1rem;
 	border: 0.1rem solid #ccc;
-	border-radius: 1.5rem;
+	border-radius: 2.5rem;
 }
 
 .extensions__toggle {
@@ -182,4 +190,18 @@ p {
 .extensions__card:nth-child(8) > .extensions__toggle-container .extensions__toggle > div,
 .extensions__card:nth-child(11) > .extensions__toggle-container .extensions__toggle > div {
 	transform: translateX(-2.5rem);
+}
+
+.extensions__card--dark,
+.extension__header--dark > h1,
+.extension__header--dark > ul > Li {
+	color: hsl(0, 0%, 93%);
+}
+
+.extensions__card--dark,
+.extensions__card--dark .extensions__remove,
+.extension__nav--dark,
+.extension__header--dark > ul > Li {
+	background: hsl(225, 23%, 24%);
+	border: 0.1rem solid hsl(226, 11%, 37%);
 }

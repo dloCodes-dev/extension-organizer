@@ -2,7 +2,7 @@ const getBookmarkData = async () => {
 	try {
 		const extensionJSON = await fetch('../data.json');
 		const extensionData = await extensionJSON.json();
-		displayBookmarks(extensionData);
+		return displayBookmarks(extensionData);
 	} catch (error) {
 		console.error(error);
 	}
@@ -43,11 +43,37 @@ const displayBookmarks = (allExtensions) => {
 		removeToggleContainer.append(removeButton, toggleContainer);
 		toggleContainer.appendChild(toggleActive);
 	});
+
+	const cards = document.querySelectorAll('.extensions__card');
+
+	return cards;
 };
 
-const toggleExtension = (evt) => {};
+const darkMode = (switchingToDarkMode) => {
+	switchingToDarkMode.forEach((cardsAndButtons) => {
+		cardsAndButtons.classList.toggle('extensions__card--dark');
+	});
 
-getBookmarkData();
+	const header = document.querySelector('.extension__header');
+	const nav = document.querySelector('.extension__nav');
+
+	header.classList.toggle('extension__header--dark');
+	nav.classList.toggle('extension__nav--dark');
+	document.body.classList.toggle('dark-mode');
+};
+
+const dynamicElements = getBookmarkData();
+
+dynamicElements.then((cardsAndRemoveButtons) => {
+	const darkModeButton = document.querySelector('.extension__nav--moon');
+
+	darkModeButton.addEventListener('click', () => {
+		darkMode(cardsAndRemoveButtons);
+	});
+});
+
+//* Need to add logic to target specific toggles
+const toggleExtension = (evt) => {};
 
 const containerForCards = document.querySelector('.extensions-container');
 containerForCards.addEventListener('click', toggleExtension);
