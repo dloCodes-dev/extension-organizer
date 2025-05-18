@@ -11,7 +11,8 @@ const getBookmarkData = async () => {
 const displayBookmarks = (allExtensions) => {
 	const cardContainer = document.querySelector('.extensions-container');
 
-	allExtensions.forEach((extension) => {
+	allExtensions.forEach((extension, i) => {
+		console.log(typeof i);
 		const extensionCard = document.createElement('div');
 		const cardHeaderContainer = document.createElement('div');
 		const textContentContainer = document.createElement('div');
@@ -30,6 +31,12 @@ const displayBookmarks = (allExtensions) => {
 		removeToggleContainer.classList.add('extensions__toggle-container');
 		removeButton.classList.add('extensions__remove');
 		toggleContainer.classList.add('extensions__toggle');
+
+		if (i === 2 || i === 5 || i === 7 || i === 10) {
+			toggleActive.classList.add('extensions__toggle--inactive');
+		} else {
+			toggleActive.classList.add('extensions__toggle--active');
+		}
 
 		extensionImage.setAttribute('src', `${extension.logo}`);
 		extensionTitle.textContent = `${extension.name}`;
@@ -62,18 +69,21 @@ const darkMode = (switchingToDarkMode) => {
 	document.body.classList.toggle('dark-mode');
 };
 
+const toggleExtension = (evt) => {
+	console.log('clicked');
+};
+
 const dynamicElements = getBookmarkData();
 
-dynamicElements.then((cardsAndRemoveButtons) => {
+dynamicElements.then((cards) => {
 	const darkModeButton = document.querySelector('.extension__nav--moon');
 
 	darkModeButton.addEventListener('click', () => {
-		darkMode(cardsAndRemoveButtons);
+		darkMode(cards);
 	});
 });
 
 //* Need to add logic to target specific toggles
-const toggleExtension = (evt) => {};
 
 const containerForCards = document.querySelector('.extensions-container');
 containerForCards.addEventListener('click', toggleExtension);
