@@ -87,6 +87,11 @@ const toggleExtension = (evt, allExtensions) => {
 		changeActiveStatus(currentHeader.textContent, allExtensions, true);
 	}
 };
+const clearDisplay = (element) => {
+	while (element.firstChild) {
+		element.removeChild(element.lastChild);
+	}
+};
 
 const changeActiveStatus = (headerContent, allExtensions, flag) => {
 	allExtensions.forEach((eachExtension) => {
@@ -99,7 +104,7 @@ const changeActiveStatus = (headerContent, allExtensions, flag) => {
 const showExtensions = (allExtensions) => {
 	const cardContainer = document.querySelector('.extensions-container');
 
-	console.log(allExtensions);
+	clearDisplay(cardContainer);
 
 	allExtensions.forEach((extension) => {
 		const extensionCard = document.createElement('div');
@@ -229,8 +234,8 @@ const inactiveExtensions = (allExtensions) => {
 	});
 };
 
-getExtensionData().then((jsonOBJ) => {
-	displayExtensions(jsonOBJ);
+getExtensionData().then((extensionsObj) => {
+	displayExtensions(extensionsObj);
 
 	const containerForCards = document.querySelector('.extensions-container');
 
@@ -239,25 +244,18 @@ getExtensionData().then((jsonOBJ) => {
 	const inactiveButton = document.querySelector('.extension__header > ul > li:last-child');
 
 	containerForCards.addEventListener('click', (evt) => {
-		toggleExtension(evt, jsonOBJ);
+		toggleExtension(evt, extensionsObj);
 	});
 
 	allButton.addEventListener('click', () => {
-		const cardContainer = document.querySelector('.extensions-container');
-
-		while (cardContainer.firstChild) {
-			cardContainer.removeChild(cardContainer.lastChild);
-		}
-
-		//! need to add function to display all extensions
-		showExtensions(jsonOBJ);
+		showExtensions(extensionsObj);
 	});
 
 	activeButton.addEventListener('click', () => {
-		const flag = activeExtensions(jsonOBJ);
+		activeExtensions(extensionsObj);
 	});
 
 	inactiveButton.addEventListener('click', () => {
-		inactiveExtensions(jsonOBJ);
+		inactiveExtensions(extensionsObj);
 	});
 });
