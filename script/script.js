@@ -90,22 +90,19 @@ const toggleExtension = (evt, allExtensions) => {
 
 const removeSelection = (evt, allExtensions) => {
 	const removeButton = evt.target;
+	const removeCard = removeButton.closest('.extensions__card');
+	const header = removeCard.querySelector('h3').textContent;
 
 	if (removeButton.classList.contains('extensions__remove')) {
-		const removeCard = removeButton.closest('.extensions__card');
-		const header = removeCard.querySelector('h3').textContent;
+		while (removeCard.firstChild) {
+			removeCard.removeChild(removeCard.lastChild);
+		}
 
-		allExtensions.forEach((eachExtension) => {
-			//!Need to add logic to remove from allExtensions array
-		});
+		removeCard.remove(removeCard);
 	}
 
-	while (removeCard.firstChild) {
-		removeCard.removeChild(removeCard.lastChild);
-	}
-	removeCard.remove(removeCard);
+	console.log(allExtensions.name.indexOf('test'));
 };
-
 const clearDisplay = (element) => {
 	while (element.firstChild) {
 		element.removeChild(element.lastChild);
