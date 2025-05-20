@@ -87,6 +87,25 @@ const toggleExtension = (evt, allExtensions) => {
 		changeActiveStatus(currentHeader.textContent, allExtensions, true);
 	}
 };
+
+const removeSelection = (evt, allExtensions) => {
+	const removeButton = evt.target;
+
+	if (removeButton.classList.contains('extensions__remove')) {
+		const removeCard = removeButton.closest('.extensions__card');
+		const header = removeCard.querySelector('h3').textContent;
+
+		allExtensions.forEach((eachExtension) => {
+			//!Need to add logic to remove from allExtensions array
+		});
+	}
+
+	while (removeCard.firstChild) {
+		removeCard.removeChild(removeCard.lastChild);
+	}
+	removeCard.remove(removeCard);
+};
+
 const clearDisplay = (element) => {
 	while (element.firstChild) {
 		element.removeChild(element.lastChild);
@@ -235,9 +254,8 @@ const inactiveExtensions = (allExtensions) => {
 };
 
 getExtensionData().then((extensionsObj) => {
-	displayExtensions(extensionsObj);
-
 	const containerForCards = document.querySelector('.extensions-container');
+	displayExtensions(extensionsObj);
 
 	const allButton = document.querySelector('.extension__header > ul > li:first-child');
 	const activeButton = document.querySelector('.extension__header > ul > li:nth-child(2)');
@@ -245,6 +263,7 @@ getExtensionData().then((extensionsObj) => {
 
 	containerForCards.addEventListener('click', (evt) => {
 		toggleExtension(evt, extensionsObj);
+		removeSelection(evt, extensionsObj);
 	});
 
 	allButton.addEventListener('click', () => {
