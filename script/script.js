@@ -99,9 +99,14 @@ const removeSelection = (evt, allExtensions) => {
 		}
 
 		removeCard.remove(removeCard);
-	}
 
-	console.log(allExtensions.name.indexOf('test'));
+		const extensionPosition = allExtensions.findIndex((extension) => {
+			return extension.name === header;
+		});
+
+		allExtensions.splice(extensionPosition, 1);
+		console.log(allExtensions);
+	}
 };
 const clearDisplay = (element) => {
 	while (element.firstChild) {
@@ -254,9 +259,15 @@ getExtensionData().then((extensionsObj) => {
 	const containerForCards = document.querySelector('.extensions-container');
 	displayExtensions(extensionsObj);
 
-	const allButton = document.querySelector('.extension__header > ul > li:first-child');
-	const activeButton = document.querySelector('.extension__header > ul > li:nth-child(2)');
-	const inactiveButton = document.querySelector('.extension__header > ul > li:last-child');
+	const allButton = document.querySelector(
+		'.extension__header > ul > li:first-child'
+	);
+	const activeButton = document.querySelector(
+		'.extension__header > ul > li:nth-child(2)'
+	);
+	const inactiveButton = document.querySelector(
+		'.extension__header > ul > li:last-child'
+	);
 
 	containerForCards.addEventListener('click', (evt) => {
 		toggleExtension(evt, extensionsObj);
