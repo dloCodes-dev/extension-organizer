@@ -75,7 +75,7 @@ const toggleExtension = (evt, allExtensions) => {
 		.closest('.extensions__card')
 		.querySelector('.extensions__header h3');
 
-	if (evt.target.classList.contains('extensions__toggle--active')) {
+	if (toggleSwitch.classList.contains('extensions__toggle--active')) {
 		toggleSwitch.classList.toggle('extensions__toggle--inactive');
 		toggleSwitch.classList.remove('extensions__toggle--active');
 
@@ -94,10 +94,7 @@ const removeSelection = (evt, allExtensions) => {
 	const header = removeCard.querySelector('h3').textContent;
 
 	if (removeButton.classList.contains('extensions__remove')) {
-		while (removeCard.firstChild) {
-			removeCard.removeChild(removeCard.lastChild);
-		}
-
+		deleteElement(removeCard.firstChild);
 		removeCard.remove(removeCard);
 
 		const extensionPosition = allExtensions.findIndex((extension) => {
@@ -105,10 +102,10 @@ const removeSelection = (evt, allExtensions) => {
 		});
 
 		allExtensions.splice(extensionPosition, 1);
-		console.log(allExtensions);
 	}
 };
-const clearDisplay = (element) => {
+
+const deleteElement = (element) => {
 	while (element.firstChild) {
 		element.removeChild(element.lastChild);
 	}
@@ -125,7 +122,7 @@ const changeActiveStatus = (headerContent, allExtensions, flag) => {
 const showExtensions = (allExtensions) => {
 	const cardContainer = document.querySelector('.extensions-container');
 
-	clearDisplay(cardContainer);
+	deleteElement(cardContainer);
 
 	allExtensions.forEach((extension) => {
 		const extensionCard = document.createElement('div');
@@ -170,9 +167,7 @@ const showExtensions = (allExtensions) => {
 const activeExtensions = (allExtensions) => {
 	const cardContainer = document.querySelector('.extensions-container');
 
-	while (cardContainer.firstChild) {
-		cardContainer.removeChild(cardContainer.lastChild);
-	}
+	deleteElement(cardContainer);
 
 	allExtensions.forEach((eachExtension) => {
 		if (eachExtension.isActive === true) {
@@ -214,9 +209,7 @@ const activeExtensions = (allExtensions) => {
 const inactiveExtensions = (allExtensions) => {
 	const cardContainer = document.querySelector('.extensions-container');
 
-	while (cardContainer.firstChild) {
-		cardContainer.removeChild(cardContainer.lastChild);
-	}
+	deleteElement(cardContainer);
 
 	allExtensions.forEach((eachExtension) => {
 		if (eachExtension.isActive === false) {
