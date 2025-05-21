@@ -33,8 +33,10 @@ const displayExtensions = (allExtensions) => {
 
 		if (i === 2 || i === 5 || i === 7 || i === 10) {
 			toggleActive.classList.add('extensions__toggle--inactive');
+			toggleContainer.classList.add('extensions__toggle-bg--inactive');
 		} else {
-			toggleActive.classList.add('extensions__toggle--active');
+			toggleActive.classList.toggle('extensions__toggle--active');
+			toggleContainer.classList.toggle('extensions__toggle-bg--active');
 		}
 
 		extensionImage.setAttribute('src', `${extension.logo}`);
@@ -83,13 +85,16 @@ const toggleExtension = (evt, allExtensions) => {
 
 	if (toggleSwitch.classList.contains('extensions__toggle--active')) {
 		toggleSwitch.classList.toggle('extensions__toggle--inactive');
-		toggleSwitch.classList.remove('extensions__toggle--active');
+		toggleSwitch.parentNode.classList.toggle('extensions__toggle-bg--inactive');
+		toggleSwitch.classList.toggle('extensions__toggle--active');
+		toggleSwitch.parentNode.classList.toggle('extensions__toggle-bg--active');
 
 		changeActiveStatus(currentHeader.textContent, allExtensions, false);
-	} else if (evt.target.classList.contains('extensions__toggle--inactive')) {
+	} else if (toggleSwitch.classList.contains('extensions__toggle--inactive')) {
 		toggleSwitch.classList.toggle('extensions__toggle--active');
-		toggleSwitch.classList.remove('extensions__toggle--inactive');
-
+		toggleSwitch.parentNode.classList.toggle('extensions__toggle-bg--active');
+		toggleSwitch.classList.toggle('extensions__toggle--inactive');
+		toggleSwitch.parentNode.classList.toggle('extensions__toggle-bg--inactive');
 		changeActiveStatus(currentHeader.textContent, allExtensions, true);
 	}
 };
@@ -246,6 +251,7 @@ const inactiveExtensions = (allExtensions) => {
 			removeToggleContainer.classList.add('extensions__toggle-container');
 			removeButton.classList.add('extensions__remove');
 			toggleContainer.classList.add('extensions__toggle');
+			toggleContainer.classList.add('extensions__toggle-bg--inactive');
 			toggleActive.classList.add('extensions__toggle--inactive');
 
 			cardContainer.appendChild(extensionCard);
