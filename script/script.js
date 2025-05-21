@@ -53,24 +53,6 @@ const displayExtensions = (allExtensions) => {
 	return cardContainer.childNodes;
 };
 
-// 	document.body.classList.toggle('dark-mode');
-// 	if (document.body.classList.contains('dark-mode')) {
-// 		extensions.forEach((cards) => {
-// 			cards.classList.toggle('extensions__card--dark');
-// 		});
-// 	} else {
-// 		extensions.forEach((cards) => {
-// 			cards.classList.toggle('extensions__card--dark');
-// 		});
-// 	}
-
-// 	const header = document.querySelector('.extension__header');
-// 	const nav = document.querySelector('.extension__nav');
-
-// 	header.classList.toggle('extension__header--dark');
-// 	nav.classList.toggle('extension__nav--dark');
-// };
-
 const darkMode = (extensions) => {
 	document.body.classList.toggle('dark-mode');
 
@@ -282,7 +264,6 @@ getExtensionData().then((extensionsObj) => {
 	const containerForCards = document.querySelector('.extensions-container');
 	const cards = displayExtensions(extensionsObj);
 
-	// darkMode(cards);
 	const darkModeButton = document.querySelector('.extension__nav-moon');
 	const allButton = document.querySelector('.extension__header > ul > li:first-child');
 	const activeButton = document.querySelector('.extension__header > ul > li:nth-child(2)');
