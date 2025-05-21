@@ -31,7 +31,7 @@ p {
 	background-color: hsl(200, 60%, 99%);
 }
 
-.extension__nav--moon,
+.extension__nav-moon,
 .extensions__remove,
 .extension__header > ul > li:hover,
 .extensions__toggle > div {
@@ -53,7 +53,7 @@ p {
 	margin: 1rem;
 }
 
-.extension__nav--moon {
+.extension__nav-moon {
 	display: flex;
 	justify-content: center;
 	align-items: center;

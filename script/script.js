@@ -250,17 +250,15 @@ const inactiveExtensions = (allExtensions) => {
 
 getExtensionData().then((extensionsObj) => {
 	const containerForCards = document.querySelector('.extensions-container');
-	displayExtensions(extensionsObj);
+	const cards = displayExtensions(extensionsObj);
 
-	const allButton = document.querySelector(
-		'.extension__header > ul > li:first-child'
-	);
-	const activeButton = document.querySelector(
-		'.extension__header > ul > li:nth-child(2)'
-	);
-	const inactiveButton = document.querySelector(
-		'.extension__header > ul > li:last-child'
-	);
+	darkMode(cards);
+
+	const allButton = document.querySelector('.extension__header > ul > li:first-child');
+	const activeButton = document.querySelector('.extension__header > ul > li:nth-child(2)');
+	const inactiveButton = document.querySelector('.extension__header > ul > li:last-child');
+
+	const darkModeButton = document.querySelector('.extension__nav-moon');
 
 	containerForCards.addEventListener('click', (evt) => {
 		toggleExtension(evt, extensionsObj);
