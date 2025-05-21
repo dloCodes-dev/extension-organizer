@@ -95,8 +95,17 @@ const toggleExtension = (evt, allExtensions) => {
 		toggleSwitch.parentNode.classList.toggle('extensions__toggle-bg--active');
 		toggleSwitch.classList.toggle('extensions__toggle--inactive');
 		toggleSwitch.parentNode.classList.toggle('extensions__toggle-bg--inactive');
+
 		changeActiveStatus(currentHeader.textContent, allExtensions, true);
 	}
+};
+
+const changeActiveStatus = (headerContent, allExtensions, flag) => {
+	allExtensions.forEach((eachExtension) => {
+		if (eachExtension.name.includes(headerContent)) {
+			eachExtension.isActive = flag;
+		}
+	});
 };
 
 const removeSelection = (evt, allExtensions) => {
@@ -122,14 +131,6 @@ const deleteElement = (element) => {
 	}
 };
 
-const changeActiveStatus = (headerContent, allExtensions, flag) => {
-	allExtensions.forEach((eachExtension) => {
-		if (eachExtension.name.includes(headerContent)) {
-			eachExtension.isActive = flag;
-		}
-	});
-};
-
 const showExtensions = (allExtensions) => {
 	const cardContainer = document.querySelector('.extensions-container');
 
@@ -153,12 +154,13 @@ const showExtensions = (allExtensions) => {
 		extensionTitle.classList.add('extensions__title');
 		removeToggleContainer.classList.add('extensions__toggle-container');
 		removeButton.classList.add('extensions__remove');
-		toggleContainer.classList.add('extensions__toggle');
+		toggleContainer.classList.add('extensions__toggle-bg--active');
 
-		if (extension.isActive === false) {
-			toggleActive.classList.add('extensions__toggle--inactive');
-		} else {
-			toggleActive.classList.add('extensions__toggle--active');
+		if (extension.isActive === true) {
+			toggleActive.classList.toggle('extensions__toggle--active');
+		} else if (extension.isActive === false) {
+			toggleActive.classList.toggle('extensions__toggle--inactive');
+			toggleContainer.classList.toggle('extensions__toggle-bg--inactive');
 		}
 
 		extensionImage.setAttribute('src', `${extension.logo}`);
@@ -206,8 +208,12 @@ const activeExtensions = (allExtensions) => {
 			extensionTitle.classList.add('extensions__title');
 			removeToggleContainer.classList.add('extensions__toggle-container');
 			removeButton.classList.add('extensions__remove');
-			toggleContainer.classList.add('extensions__toggle');
+			toggleContainer.classList.add('extensions__toggle-bg--active');
 			toggleActive.classList.add('extensions__toggle--active');
+
+			// if (eachExtension.isActive === true) {
+			// 	toggleActive.classList.toggle('extensions__toggle--active');
+			// }
 
 			cardContainer.appendChild(extensionCard);
 			extensionCard.append(cardHeaderContainer, removeToggleContainer);
@@ -250,7 +256,6 @@ const inactiveExtensions = (allExtensions) => {
 			extensionTitle.classList.add('extensions__title');
 			removeToggleContainer.classList.add('extensions__toggle-container');
 			removeButton.classList.add('extensions__remove');
-			toggleContainer.classList.add('extensions__toggle');
 			toggleContainer.classList.add('extensions__toggle-bg--inactive');
 			toggleActive.classList.add('extensions__toggle--inactive');
 

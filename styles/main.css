@@ -159,8 +159,7 @@ p {
 }
 
 .extensions__toggle-bg--active,
-.extensions__toggle-bg--inactive,
-.extensions__toggle {
+.extensions__toggle-bg--inactive {
 	position: relative;
 	background-color: hsl(3, 77%, 44%);
 	width: 5rem;
@@ -176,6 +175,7 @@ p {
 	height: 2.3rem;
 	padding: 1rem;
 	border-radius: 50%;
+	cursor: pointer;
 }
 
 .extensions__toggle--active {
