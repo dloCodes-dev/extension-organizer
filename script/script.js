@@ -50,14 +50,32 @@ const displayExtensions = (allExtensions) => {
 		toggleContainer.appendChild(toggleActive);
 	});
 
-	const cards = document.querySelectorAll('.extensions__card');
-
-	return [cards, allExtensions];
+	return cardContainer.childNodes;
 };
 
+// 	document.body.classList.toggle('dark-mode');
+// 	if (document.body.classList.contains('dark-mode')) {
+// 		extensions.forEach((cards) => {
+// 			cards.classList.toggle('extensions__card--dark');
+// 		});
+// 	} else {
+// 		extensions.forEach((cards) => {
+// 			cards.classList.toggle('extensions__card--dark');
+// 		});
+// 	}
+
+// 	const header = document.querySelector('.extension__header');
+// 	const nav = document.querySelector('.extension__nav');
+
+// 	header.classList.toggle('extension__header--dark');
+// 	nav.classList.toggle('extension__nav--dark');
+// };
+
 const darkMode = (extensions) => {
-	extensions.forEach((cardsAndButtons) => {
-		cardsAndButtons.classList.toggle('extensions__card--dark');
+	document.body.classList.toggle('dark-mode');
+
+	extensions.forEach((cards) => {
+		cards.classList.toggle('extensions__card--dark');
 	});
 
 	const header = document.querySelector('.extension__header');
@@ -65,8 +83,14 @@ const darkMode = (extensions) => {
 
 	header.classList.toggle('extension__header--dark');
 	nav.classList.toggle('extension__nav--dark');
-	document.body.classList.toggle('dark-mode');
-	console.log('clicked');
+};
+
+const darkModeCards = (allCurrentCards) => {
+	if (document.body.classList.contains('dark-mode')) {
+		allCurrentCards.forEach((card) => {
+			card.classList.toggle('extensions__card--dark');
+		});
+	}
 };
 
 const toggleExtension = (evt, allExtensions) => {
@@ -162,6 +186,8 @@ const showExtensions = (allExtensions) => {
 		removeToggleContainer.append(removeButton, toggleContainer);
 		toggleContainer.appendChild(toggleActive);
 	});
+
+	darkModeCards(cardContainer.childNodes);
 };
 
 const activeExtensions = (allExtensions) => {
@@ -204,6 +230,8 @@ const activeExtensions = (allExtensions) => {
 			toggleContainer.appendChild(toggleActive);
 		}
 	});
+
+	darkModeCards(cardContainer.childNodes);
 };
 
 const inactiveExtensions = (allExtensions) => {
@@ -246,19 +274,23 @@ const inactiveExtensions = (allExtensions) => {
 			toggleContainer.appendChild(toggleActive);
 		}
 	});
+
+	darkModeCards(cardContainer.childNodes);
 };
 
 getExtensionData().then((extensionsObj) => {
 	const containerForCards = document.querySelector('.extensions-container');
 	const cards = displayExtensions(extensionsObj);
 
-	darkMode(cards);
-
+	// darkMode(cards);
+	const darkModeButton = document.querySelector('.extension__nav-moon');
 	const allButton = document.querySelector('.extension__header > ul > li:first-child');
 	const activeButton = document.querySelector('.extension__header > ul > li:nth-child(2)');
 	const inactiveButton = document.querySelector('.extension__header > ul > li:last-child');
 
-	const darkModeButton = document.querySelector('.extension__nav-moon');
+	darkModeButton.addEventListener('click', () => {
+		darkMode(cards);
+	});
 
 	containerForCards.addEventListener('click', (evt) => {
 		toggleExtension(evt, extensionsObj);
