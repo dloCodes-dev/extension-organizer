@@ -211,10 +211,6 @@ const activeExtensions = (allExtensions) => {
 			toggleContainer.classList.add('extensions__toggle-bg--active');
 			toggleActive.classList.add('extensions__toggle--active');
 
-			// if (eachExtension.isActive === true) {
-			// 	toggleActive.classList.toggle('extensions__toggle--active');
-			// }
-
 			cardContainer.appendChild(extensionCard);
 			extensionCard.append(cardHeaderContainer, removeToggleContainer);
 			cardHeaderContainer.append(extensionImage, textContentContainer);
