@@ -244,23 +244,18 @@ p {
 		width: 0%;
 	}
 	.extensions-container {
-		/* display: grid;
-		flex-wrap: wrap;
-		justify-content: space-around;
-		row-gap: 3%;
-		margin-top: 3rem;
-		height: 100vh;
-		height: 100dvh; */
 		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		grid-template-rows: repeat(3, 1fr);
-		grid-gap: 2rem;
+		grid-template-columns: repeat(3, 1fr);
+		/* grid-template-rows: repeat(3, 1fr); */
+		grid-gap: 1.5rem;
+		padding: 0rem 3rem;
 	}
 
 	.extensions__card {
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
+		row-gap: 4rem;
 	}
 
 	.extensions__card:first-child {
