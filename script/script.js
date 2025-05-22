@@ -154,10 +154,10 @@ const showExtensions = (allExtensions) => {
 		extensionTitle.classList.add('extensions__title');
 		removeToggleContainer.classList.add('extensions__toggle-container');
 		removeButton.classList.add('extensions__remove');
-		toggleContainer.classList.add('extensions__toggle-bg--active');
 
 		if (extension.isActive === true) {
 			toggleActive.classList.toggle('extensions__toggle--active');
+			toggleContainer.classList.add('extensions__toggle-bg--active');
 		} else if (extension.isActive === false) {
 			toggleActive.classList.toggle('extensions__toggle--inactive');
 			toggleContainer.classList.toggle('extensions__toggle-bg--inactive');
