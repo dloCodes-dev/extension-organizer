@@ -225,13 +225,19 @@ p {
 }
 
 @media screen and (min-width: 1440px) {
+	.extension,
+	main {
+		width: 95%;
+		margin: auto;
+	}
+
 	.extension__nav-moon {
 		width: 5%;
 	}
 
 	.extension__header {
 		flex-direction: row;
-		padding: 0rem 2.5rem;
+		padding: 0rem 1.25rem;
 	}
 
 	.extension__header > h1 {
@@ -243,10 +249,10 @@ p {
 		flex-grow: 1;
 		width: 0%;
 	}
+
 	.extensions-container {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
-		/* grid-template-rows: repeat(3, 1fr); */
 		grid-gap: 1.5rem;
 		padding: 0rem 3rem;
 	}
